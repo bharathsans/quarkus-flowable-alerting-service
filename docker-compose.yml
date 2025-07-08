@@ -1,0 +1,24 @@
+services:
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: flowable
+      POSTGRES_PASSWORD: flowable
+      POSTGRES_DB: flowable
+    volumes:
+      - flowable-db-data:/var/lib/postgresql/data
+
+  flowable-all-in-one:
+    image: flowable/all-in-one:6.5.0
+    depends_on:
+      - postgres
+    ports:
+      - "8081:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/flowable
+      SPRING_DATASOURCE_USERNAME: flowable
+      SPRING_DATASOURCE_PASSWORD: flowable
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.postgresql.Driver
+
+volumes:
+  flowable-db-data:
