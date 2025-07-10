@@ -1,0 +1,9 @@
+{
+  "processDefinitionKey": "helloworld",
+  "variables": [
+    { "name": "alertMessage", "value": "${alertMessage}" },
+    { "name": "severity", "value": "${severity}" },
+    { "name": "email", "value": "${email}" },
+    { "name": "phoneNumber", "value": "${phoneNumber}" }
+  ]
+}
